@@ -255,6 +255,7 @@ img {
 /*
 -------PHOTOGRAPHER-PAGE------
 */
+
 figcaption{
   width: 97%;
   margin: auto;
@@ -291,6 +292,7 @@ figcaption p{
   width: 100%;
   height: 300px;
 }
+
 .col-10 {
   flex: 0 0 auto;
   width: 60%;

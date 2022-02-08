@@ -72,6 +72,7 @@ fetch("../data/photographers.json")
                 let totalLikesDOM = document.getElementById("likes-total");
                 calcTotalLikes();
                 totalLikesDOM.innerHTML = totalLikes;
+
                 //bascule les likes "icone" vers like "total"
                 heartButtonDOM.addEventListener("click",function(){
                     if(parseInt(likedDOM.innerHTML) === photo.likes){
@@ -89,6 +90,7 @@ fetch("../data/photographers.json")
                 });
             });
         }
+        
         //trie par like
         function SortByLikes() {
             photos.sort((a, b) => {

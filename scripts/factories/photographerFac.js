@@ -18,7 +18,9 @@ function photographerFactory(data) {
             return(dom.body.firstChild);
         }
     }
+
     //Partie 2nd pages Entête Photographe
+    
     function getHeaderDom(){
         if(data.city){
             const { name, portrait,city,country,tagline} = data;

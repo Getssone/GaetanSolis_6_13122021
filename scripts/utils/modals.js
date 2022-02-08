@@ -42,15 +42,10 @@ function modalFunction(){
             document.getElementById("submitButton").setAttribute("aria-label","Invalid inputs, cannot submit")
             document.getElementById("submitButton").style.backgroundColor = "red"
         }
-        
-
         e.preventDefault();
         
     });
 }
-// Fermer le formulaire avec le message de validation
-
-
 
 function lightboxFunction(){
     
