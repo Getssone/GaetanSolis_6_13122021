@@ -1,5 +1,5 @@
 "use strict";
-fetch("../data/photographers.json")
+fetch("./data/photographers.json")
     .then((response) => {
         if (!response.ok) {
             throw new Error("HTTP error " + response.status);
@@ -11,7 +11,7 @@ fetch("../data/photographers.json")
         const media = json.media;
         let photos = [];
 
-        //GETS THE CURRENT PHOTOGRAPHER
+        //Utilisation du photographe actuel
         let photographer;
         var photographerName = localStorage.getItem("photographerName");
         photographers.forEach((thisphotographer) => {
@@ -19,13 +19,13 @@ fetch("../data/photographers.json")
                 photographer = thisphotographer;
             }
         });
-        //GETS THE RIGHT PHOTOS
+       //Récupération des photos du photographe 
         media.forEach((photo) => {
             if(photo.photographerId === photographer.id){
                 photos.push(photo);
             }
         })
-        //CALCS TOTAL LIKES
+        //Calcule le total de Likes
         let totalLikes;
         function calcTotalLikes(){
             totalLikes = 0
@@ -36,27 +36,27 @@ fetch("../data/photographers.json")
         }
         calcTotalLikes();
 
-        //ADDS HEADER SELECT AND TOTAL LIKES SECTION FROM THE FACTORY
+         //Ajoute les entête et le tolal de like
         async function displayData() {
             const photographerModel = photographerFactory(photographer);
             const photographersSection = document.querySelector(".gallery_section");
-            //ADDS THE HEADER
+            //Ajout de l'entête
             const headerDOM = photographerModel.getHeaderDom();
             document.querySelector(".photograph-header").replaceWith(headerDOM);
-            //ADDS THE SELECT
+            //ajout du selecteur
             const selectDOM = photographerModel.getSelectDOM();
             photographersSection.insertAdjacentElement("afterbegin",selectDOM);
-            //ADDS THE TOTAL LIKES
+            //Ajout de likes
             const totalLikesDOM = photographerModel.getTotalLikesDOM();
             photographersSection.lastElementChild.insertAdjacentElement("afterend",totalLikesDOM);
-            //ADDS THE CONTACT MODAL
+            //Ajout du modal Contact
             const contactModalDOM = photographerModel.getContactModalDOM();
             document.getElementById("main" ).insertAdjacentElement("afterend",contactModalDOM);
-            //ADDS THE LIGHTBOX MODAL
+            //ajout du modal Lightbox
             const lightboxModalDom = photographerModel.getLightboxDOM();
             document.getElementById("contactModal").insertAdjacentElement("afterend",lightboxModalDom);
         }
-        //ADDS REMOVES EVERY GALLERY FIGURE AND RE ADDS THEM + LIKES TOGGLE
+        //Supprime puis ajoute toutes les figures de la galerie avec les likes
         function refreshallery(){
             const photographersSection = document.querySelector(".gallery_section");
             while(document.querySelector(".personal-fig")){
@@ -72,7 +72,8 @@ fetch("../data/photographers.json")
                 let totalLikesDOM = document.getElementById("likes-total");
                 calcTotalLikes();
                 totalLikesDOM.innerHTML = totalLikes;
-                //TOGGLES LIKES TOTAL LIKES AND ICONS
+
+                //bascule les likes "icone" vers like "total"
                 heartButtonDOM.addEventListener("click",function(){
                     if(parseInt(likedDOM.innerHTML) === photo.likes){
                         likedDOM.innerHTML = photo.likes + 1;
@@ -89,7 +90,8 @@ fetch("../data/photographers.json")
                 });
             });
         }
-        //SORTS BY LIKES
+        
+        //trie par like
         function SortByLikes() {
             photos.sort((a, b) => {
                 return b.likes - a.likes;
@@ -104,26 +106,26 @@ fetch("../data/photographers.json")
             modalFunction();
             lightboxFunction();
 
-            //############SORTING############//
+            //Trie
             document.getElementById("select-sort").addEventListener('change', function() {
-                //IF SELECT SORT BY POPULARITY
+                //Trie par popularité
                 if (document.getElementById("select-sort").selectedIndex === 0) {
                     SortByLikes();
                 }
-                //IF SELECT SORT BY DATE
+                //Trie par date
                 if (document.getElementById("select-sort").selectedIndex === 1) {
                     photos.sort((a, b) => {
                         return a.date.replaceAll("-", "") - b.date.replaceAll("-", "");
                     });
                 }
-                //IF SELECT SORT BY NAME
+                //Trie par nom
                 if (document.getElementById("select-sort").selectedIndex === 2) {
                     photos.sort((a, b) => {
-                        //IF A IS ALPHABETICALLY FIRST
+                        //A -> Z Pourquoi le -1
                         if (a.title < b.title) {
                             return -1;
                         }
-                        //IF B IS ALPHABETICALLY FIRST
+                        //Z -> A
                         if (a.title > b.title) {
                             return 1;
                         }
