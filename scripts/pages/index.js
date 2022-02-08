@@ -11,7 +11,7 @@ fetch("data/photographers.json")
     .then((json) => {
         const photographers = json.photographers;
         let clickedName;
-        ////Récupération de l'Id via pathName/
+        //Récupération de l'Id via pathName/
         // if(window.location.pathname === "/"){
             displayData(photographers);
         // }
