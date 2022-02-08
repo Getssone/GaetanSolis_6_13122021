@@ -22,7 +22,8 @@ fetch("data/photographers.json")
                      //vérification si nom du phtographe =  au nom dans la balise "a" est identique
                     if(photographer.name === figure.firstElementChild.lastElementChild.innerHTML){
                         clickedName = photographer.name;
-                        
+                        //Derniere Modification
+                        window.location.pathname = "/photographe.html"
                         //Enregistrement du nom dans le localStorage pour réutiliser lors de la récupération des média
                         localStorage.setItem("photographerName",clickedName);
                     }
