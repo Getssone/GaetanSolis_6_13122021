@@ -11,10 +11,10 @@ fetch("data/photographers.json")
     .then((json) => {
         const photographers = json.photographers;
         let clickedName;
-        //Récupération de l'Id via pathName/
-        if(window.location.pathname === "/"){
+        ////Récupération de l'Id via pathName/
+        // if(window.location.pathname === "/"){
             displayData(photographers);
-        }
+        // }
 
         document.querySelectorAll(".home-fig").forEach((figure) => {
             figure.addEventListener("click",function(){
