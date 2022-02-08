@@ -255,7 +255,6 @@ img {
 /*
 -------PHOTOGRAPHER-PAGE------
 */
-
 figcaption{
   width: 97%;
   margin: auto;
@@ -267,8 +266,8 @@ figcaption p{
 }
 
 .personal-fig {
-  padding: 10px;
   height: 350px;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -293,11 +292,6 @@ figcaption p{
   height: 300px;
 }
 
-.col-10 {
-  flex: 0 0 auto;
-  width: 60%;
-}
-
 .row-photographer-info {
   align-items: center;
   height: 313px;
@@ -308,11 +302,10 @@ figcaption p{
   background-color: white;
 }
 #contactModal{
-  background-color: transparent;
+  background-color: white;
 }
 #modal-lb {
   background-color: white;
-  overflow-y: hidden; 
 }
 
 #modal-lb-dialog {
@@ -323,13 +316,13 @@ figcaption p{
 }
 
 .modal-content {
-  border: 2px solid white;
-  background-color: white;
+  border: 0;
+  background-color: #db8876 !important;
   flex-direction: unset;
   flex-wrap: wrap;
   justify-content: center;
+  border: 0 white;
 }
-
 
 .modal-body button {
   height: min-content;
@@ -362,7 +355,6 @@ figcaption p{
   font-size: 3rem;
 }
 
-
 #img-lb {
   height: 100%;
   max-height: 87vh;
@@ -371,9 +363,9 @@ figcaption p{
 }
 
 .close {
-  right: 170px;
-  top: 8rem;
   position: fixed;
+  top: 2rem;
+  right: 3rem;
 }
 
 .modal-body label{

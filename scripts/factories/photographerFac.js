@@ -1,6 +1,6 @@
 function photographerFactory(data) {
-    //une fois les donnée récupéré
-    //Partie INDEX carte des photographes
+    //IF I AM PASSING PHOTOGRAPHER DATA
+    //THE INDEX PHOTOGRAPHER CARDS
     function getUserCardDOM() {
         if(data.city){
             const { name, portrait,city,country,tagline,price } = data;
@@ -18,9 +18,7 @@ function photographerFactory(data) {
             return(dom.body.firstChild);
         }
     }
-
-    //Partie 2nd pages Entête Photographe
-    
+    //PHOTOGRAPHER HEADER
     function getHeaderDom(){
         if(data.city){
             const { name, portrait,city,country,tagline} = data;
@@ -46,7 +44,7 @@ function photographerFactory(data) {
             return(dom.body.firstChild);
         }
     }
-   //Selecteur de Trie
+    //WHERE YOU SELECT THE SORT ORDER
     function getSelectDOM() {
         if(data.city){
             let article = `
@@ -62,7 +60,7 @@ function photographerFactory(data) {
             return(dom.body.firstChild);
         }
     }
-    //Les Like totales en bas de pages
+    //THE TOTAL LIKES DIV AT THE BOTTOM
     function getTotalLikesDOM(){
         if(data.city){
             const {price } = data;
@@ -86,7 +84,7 @@ function photographerFactory(data) {
             return(dom.body.firstChild);
         }
     }
-    //Modal de contact
+    //CONTACT MODAL (ADD ONCE AND CHANGE ELEMENT)
     function getContactModalDOM(){
         if(data.city){
             const {name } = data;
@@ -129,7 +127,7 @@ function photographerFactory(data) {
             return(dom.body.firstChild);
         }
     }
-    //-----------------------Element de la Gallerie
+    //-----------------------GALLERY ELEMENT
     function getLightboxDOM(){
         if(data.city){
             let article = `
@@ -158,7 +156,7 @@ function photographerFactory(data) {
             return(dom.body.firstChild);
         }
     }
-    //Chaque element de la Gallery utilise un "Loop"
+    //GALLERY ELEMENT  FOR EACH MEDIA (USE A LOOP)
     function getGalleryDom(){
         if(data.title){
             const { title, image,video,likes} = data;
@@ -166,7 +164,7 @@ function photographerFactory(data) {
             const foldername = photographerName.replace(/ .*/,'');
 
             let imgElement;
-            if(video){// permet de switcher entre une vidéo et une photo
+            if(video){//SWITCHES BETWEEN PHOTO AND VIDEO
                 imgElement = `<video tabindex=0 src="assets/images/${foldername}/${video}" alt="${title}" aria-label="${title}" class="media"></video>`;
             }
             else{
